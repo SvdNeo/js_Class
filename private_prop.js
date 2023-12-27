@@ -33,3 +33,14 @@ console.log( arr instanceof Object );
 class Rabbit {}
 let rabbit = new Rabbit();
 console.log( rabbit instanceof Rabbit );
+
+//task 1 why it returns true
+
+function A() {}
+function B() {}
+
+B.prototype = A.prototype = {};
+B.prototype = {name:"ok"}
+let a = new A();
+
+console.log( a instanceof B );

@@ -19,10 +19,28 @@ catch(error){
 }
 
 //try with setTimeout
-try {
-    setTimeout(function() {
-      noSuchVariable; // script will die here
-    }, 1000);
-  } catch (err) {
-    console.log( "won't work" );
-  }
+// try {
+//     setTimeout(function() {
+//       noSuchVariable; // script will die here
+//     }, 1000);
+//   } catch (err) {
+//     console.log( "won't work" );
+//   }
+
+  // setTimeout with try catch
+  try{
+  setTimeout(() => {
+    try{
+        console.log(`reachable`)
+    }catch(err){
+        console.log(`error is caught`)
+    }
+    
+    
+  }, 1000)
+}catch(err){
+console.log(`error`)
+}
+finally{
+    console.log(`end the loop`)
+}

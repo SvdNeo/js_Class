@@ -25,3 +25,11 @@ cfd.water = 20;
 console.log(cfd.water);
 cfd.water = -25;
 console.log(cfd.water);
+
+let arr = [1, 2, 3];
+console.log( arr instanceof Array ); 
+console.log( arr instanceof Object );
+
+class Rabbit {}
+let rabbit = new Rabbit();
+console.log( rabbit instanceof Rabbit );

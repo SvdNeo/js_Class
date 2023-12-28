@@ -72,3 +72,17 @@ try {
   console.log( err.name );
   console.log( err.message );
 }
+
+//“Throw” operator
+let json1 = '{"age":30}'
+try{
+    let user = JSON.parse(json1)
+    if(!user.name){
+        throw new SyntaxError("Invalid data")
+    }
+    console.log(user.name)
+}catch(err){
+    console.log(err.message)
+    console.log(err.name)
+    console.log(err.stack)
+}

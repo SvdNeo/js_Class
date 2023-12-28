@@ -121,7 +121,7 @@ try {
 
 }
 
-let num = +prompt("Enter a positive number");
+//let num = +prompt("Enter a positive number");
 let diff, result;
 
 function fib(n) {
@@ -142,5 +142,42 @@ try {
   diff = performance.now() - start;
 }
 
-alert(result || "An error occurred");
-alert(`Execution took ${diff.toFixed(2)}ms`);
+console.log(result || "An error occurred");
+console.log(`Execution took ${diff.toFixed(2)}ms`);
+
+//custom error
+class ValidationError extends Error {
+    constructor(message) {
+      super(message); // (1)
+      this.name = "ValidationError"; // (2)
+    }
+  }
+  
+  function test() {
+    throw new ValidationError("Whoops!");
+  }
+  
+  try {
+    test();
+  } catch(err) {
+    console.log(err.message); // Whoops!
+    console.log(err.name); // ValidationError
+    console.log(err.stack); // a list of nested calls with line numbers for each
+  }
+
+  //task 
+  class FormatError extends SyntaxError{
+    constructor(message){
+        super(message);
+        this.name = "FormatError"
+
+    }
+  }
+  let err = new FormatError("formatting error");
+
+console.log( err.message ); // formatting error
+console.log( err.name ); // FormatError
+console.log( err.stack ); // stack
+
+console.log( err instanceof FormatError ); 
+console.log( err instanceof SyntaxError );

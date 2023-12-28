@@ -120,3 +120,27 @@ try {
   }
 
 }
+
+let num = +prompt("Enter a positive number");
+let diff, result;
+
+function fib(n) {
+  if (n < 0) {
+    throw new Error("Must be a positive number");
+  } else {
+    return n <= 1 ? n : fib(n - 1) + fib(n - 2);
+  }
+}
+
+let start = performance.now();
+
+try {
+  result = fib(num);
+} catch (err) {
+  result = 0;
+} finally {
+  diff = performance.now() - start;
+}
+
+alert(result || "An error occurred");
+alert(`Execution took ${diff.toFixed(2)}ms`);

@@ -86,3 +86,37 @@ try{
     console.log(err.name)
     console.log(err.stack)
 }
+
+let json2 = '{ "age": 30 }'; // incomplete data
+
+try {
+  user = JSON.parse(json2); // <-- forgot to put "let" before user
+
+  // ...
+} catch (err) {
+  console.log("JSON Error: " + err); // JSON Error: ReferenceError: user is not defined
+  // (no JSON Error actually)
+}
+
+let json5 = '{ "age": 30 }'; // incomplete data
+try {
+
+  let user = JSON.parse(json5);
+
+  if (!user.name) {
+    throw new SyntaxError("Incomplete data: no name");
+  }
+
+  blabla(); // unexpected error
+
+  console.log( user.name );
+
+} catch (err) {
+
+  if (err instanceof SyntaxError) {
+    console.log( "JSON Error: " + err.message );
+  } else {
+    throw err; // rethrow (*)
+  }
+
+}
